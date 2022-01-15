@@ -1,1 +1,27 @@
-<h1>This is the Projects page</h1>
+{% extends 'main.html' %}
+{% block content %}
+
+<br>
+<h1>Projects</h1>
+<hr>
+<table>
+    <tr>
+        <th>Project</th>
+        <th>Positive Ratio</th>
+        <th>Votes</th>
+        <th>Date Created</th>
+        <th></th>
+    </tr>
+
+    {% for project in projects %}
+    <tr>
+        <td>{{project.title}}</td>
+        <td>{{project.vote_ratio}}</td>
+        <td>{{project.vote_total}}</td>
+        <td>{{project.created}}</td>
+        <td><a href="{% url 'project' project.id %}">View Project</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}
